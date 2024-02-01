@@ -24,6 +24,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
+            <a href="{{ route('user.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Responsive Hover Table</h3>
@@ -53,6 +54,7 @@
                   </thead>
                   <tbody>
                     @foreach($data as $d)
+                      <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $d->name }}</td>
                         <td>{{ $d->email }}</td>
@@ -60,6 +62,7 @@
                             <a href="#" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
                             <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
                         </td>
+                      </tr>
                     @endforeach
                   </tbody>
                 </table>

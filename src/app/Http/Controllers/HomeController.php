@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -17,5 +19,29 @@ class HomeController extends Controller
         $data = User::get();
 
         return view('index', compact('data'));
+    }
+
+    public function create() {
+
+        return view('create');
+    }
+
+    public function store(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'email' =>  'required|email',
+            'nama' =>  'required',
+            'password' =>  'required',
+        ]);
+
+        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $data['email']      = $request->email;
+        $data['name']       = $request->nama;
+        $data['password']   = Hash::make($request->password);
+
+        User::create($data);
+
+        return redirect()->route('user.index');
+
     }
 }
