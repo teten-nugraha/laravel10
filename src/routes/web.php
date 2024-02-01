@@ -20,3 +20,4 @@ use App\Http\Controllers\HomeController;
 // });
 
 Route::get('/', [HomeController::class, 'dashboard']);
+Route::get('/user', [HomeController::class, 'index']);

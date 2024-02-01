@@ -9,13 +9,13 @@ class HomeController extends Controller
 {
 
     public function dashboard() {
-        return view('layout.main');
+        return view('dashboard');
     }
 
     public function index() {
 
         $data = User::get();
 
-        return view('layout/index', compact('data'));
+        return view('index', compact('data'));
     }
 }
