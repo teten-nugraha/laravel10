@@ -48,6 +48,7 @@
                     <tr>
                       <th>No</th>
                       <th>Nama</th>
+                      <th>Photo</th>
                       <th>Email</th>
                       <th>Action</th>
                     </tr>
@@ -57,6 +58,8 @@
                       <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $d->name }}</td>
+                        <td><img src="{{ asset('storage/photo-user/' . $d->image) }}" alt=""
+                          width="50"></td>
                         <td>{{ $d->email }}</td>
                         <td>
                             <a href="{{ route('admin.user.edit',['id' => $d->id]) }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
