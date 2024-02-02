@@ -72,4 +72,15 @@ class HomeController extends Controller
         return redirect()->route('user.index');
 
     }
+
+    public function delete(Request $request, $id) {
+    
+        $data = User::find($id);
+        if($data) {
+            $data->delete();
+        }
+
+        return redirect()->route('user.index');
+
+    }
 }
